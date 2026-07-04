@@ -1,6 +1,6 @@
 # End-to-End Waste Detection Using YOLOv5
 
-An end-to-end waste detection application built using **YOLOv5**. This project provides a complete pipeline for detecting waste objects, along with optional deployment workflows using **Docker**, **AWS**, **Azure**, and **GitHub Actions**.
+An end-to-end waste detection application built using **YOLOv5**. This project provides a complete pipeline for detecting waste objects.
 
 ---
 
@@ -101,159 +101,6 @@ The project follows a modular architecture:
 4. Pipeline
 5. Application (`app.py`)
 
----
-
-# 🐳 Docker
-
-Build the Docker image:
-
-```bash
-docker build -t waste-detection .
-```
-
-Run the container:
-
-```bash
-docker run -p 5000:5000 waste-detection
-```
-
----
-
-# ☁️ AWS Deployment (GitHub Actions)
-
-## Services Used
-
-- GitHub Actions
-- Amazon ECR
-- Amazon EC2
-- Docker
-- IAM
-
-## Deployment Workflow
-
-1. Build Docker image
-2. Push image to Amazon ECR
-3. Launch EC2 instance
-4. Pull Docker image from ECR
-5. Run the application inside Docker
-
----
-
-## AWS Setup
-
-### 1. Create an IAM User
-
-Grant the following permissions:
-
-- AmazonEC2ContainerRegistryFullAccess
-- AmazonEC2FullAccess
-
----
-
-### 2. Create an Amazon ECR Repository
-
-Save the repository URI for later use.
-
-Example:
-
-```text
-<account-id>.dkr.ecr.<region>.amazonaws.com/waste
-```
-
----
-
-### 3. Launch an EC2 Instance
-
-Use Ubuntu as the operating system.
-
----
-
-### 4. Install Docker
-
-```bash
-sudo apt-get update -y
-
-curl -fsSL https://get.docker.com -o get-docker.sh
-
-sudo sh get-docker.sh
-
-sudo usermod -aG docker ubuntu
-
-newgrp docker
-```
-
----
-
-### 5. Configure a Self-Hosted GitHub Runner
-
-Navigate to:
-
-```
-Repository
-→ Settings
-→ Actions
-→ Runners
-→ New Self-hosted Runner
-```
-
-Follow the instructions provided by GitHub.
-
----
-
-### 6. Configure GitHub Secrets
-
-Add the following repository secrets:
-
-| Secret | Description |
-|---------|-------------|
-| AWS_ACCESS_KEY_ID | AWS Access Key |
-| AWS_SECRET_ACCESS_KEY | AWS Secret Key |
-| AWS_REGION | AWS Region |
-| AWS_ECR_LOGIN_URI | Amazon ECR Login URI |
-| ECR_REPOSITORY_NAME | Repository Name |
-
----
-
-# ☁️ Azure Deployment (GitHub Actions)
-
-## Services Used
-
-- GitHub Actions
-- Azure Container Registry (ACR)
-- Azure Web App
-- Docker
-
----
-
-## Build Docker Image
-
-```bash
-docker build -t <acr-name>.azurecr.io/waste:latest .
-```
-
-Login to Azure Container Registry:
-
-```bash
-docker login <acr-name>.azurecr.io
-```
-
-Push the image:
-
-```bash
-docker push <acr-name>.azurecr.io/waste:latest
-```
-
----
-
-## Deployment Workflow
-
-1. Build Docker image
-2. Push image to Azure Container Registry
-3. Deploy to Azure Web App
-4. Pull the image from ACR
-5. Start the application
-
----
 
 # 📦 Requirements
 
@@ -262,6 +109,18 @@ Install dependencies:
 ```bash
 pip install -r requirements.txt
 ```
+
+
+
+---
+
+## 📸 Demo
+
+<p align="center">
+  <img src="screenshot.png" alt="Waste Detection using YOLOv5 Web Application" width="100%">
+</p>
+
+The web application allows users to upload an image, run inference using a trained **YOLOv5** model, and visualize the detected waste object along with its confidence score.
 
 ---
 
