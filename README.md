@@ -117,7 +117,7 @@ pip install -r requirements.txt
 ## 📸 Demo
 
 <p align="center">
-  <img src="screenshot.png" alt="Waste Detection using YOLOv5 Web Application" width="100%">
+  <img src="Screenshot 2026-07-05 003437.png" alt="Waste Detection using YOLOv5 Web Application" width="100%">
 </p>
 
 The web application allows users to upload an image, run inference using a trained **YOLOv5** model, and visualize the detected waste object along with its confidence score.
