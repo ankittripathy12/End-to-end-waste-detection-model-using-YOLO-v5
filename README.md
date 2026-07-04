@@ -40,7 +40,7 @@ An end-to-end waste detection application built using **YOLOv5**. This project p
 
 Before running the project, ensure you have:
 
-- Python 3.7 or later
+- Python 3.10 
 - Conda (recommended)
 - Git
 - Docker (optional)
